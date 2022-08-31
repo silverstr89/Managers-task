@@ -1,5 +1,5 @@
 // TASK - MANAGERS
-// Manager in Lake Contract is someone, who manages certain consents - this manager is usually a trust entity that can add people to certain owned consents
+// Manager in Contract is someone, who manages certain consents - this manager is usually a trust entity that can add people to certain owned consents
 // please review the following code and make changes to make the code fully working
 // 1. We have a function to updateManager - this function works with _managersToConsents and _managers in order to log active managers and to which consents is a certain manager; these variables need to change accordingly to changes pushed to updateManager function
 // 2. We have some basic queries to see active managers, to check if a certain address is a manages and which consents does a certain manager manage (by address again)
@@ -83,8 +83,6 @@ contract Managers is IManagers, Ownable {
     //I decide to change this function totally
     //We will look is any requested conesents already exist or not. If it is exist, we will not allow.
     //I made suggestion one consents only for one manager
-    //But we could discuss it here more, for ex add more logs, or another logic.
-    //Anyway, previous code was not really good.
     function _isManagerAllowedToChangeConsents(uint32[] memory consentsIds) internal view returns (bool allowed) {
         for (uint i=0; i<consentsIds.length; i++) {
             if (consentsExist[consentsIds[i]]) {
